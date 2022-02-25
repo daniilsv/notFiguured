@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">notfiguured</string>
+    <integer name="com_vk_sdk_AppId"></integer>
+    <string name="facebook_app_id"></string>
+    <string name="fb_login_protocol_scheme"></string>
+    <string name="ok_sdk_app_id" translatable="false"></string>
+    <string name="ok_sdk_app_key" translatable="false"></string>
+    <string name="ok_redirect_url" translatable="false"></string>
+</resources>

@@ -1,0 +1,16 @@
+name: chopper_api
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  chopper: ^3.0.3
+
+dev_dependencies:
+  chopper_generator: ^3.0.5
+  json_annotation: ^3.0.1
+  json_serializable: ^3.4.1
+  build_runner: ^1.10.7
+  swagger_dart_code_generator: 1.6.8

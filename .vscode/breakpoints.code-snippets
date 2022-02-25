@@ -1,0 +1,36 @@
+{
+	// Place your Рабочая область notfiguured_app snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	"Add breakpoints import": {
+		"scope": "dart",
+		"prefix": ["bpi"],
+		"body": [
+			"import 'package:notfiguured/app/breakpoints.dart';",
+			"$0"
+		],
+		"description": "Add breakpoints import"
+	},
+	"Add breakpoint by width": {
+		"scope": "dart",
+		"prefix": ["bpw"],
+		"body": [
+			"[$1].byWidth",
+			"$0"
+		],
+		"description": "Use breakpoint by width"
+	},
+	"Add breakpoint by height": {
+		"scope": "dart",
+		"prefix": ["bph"],
+		"body": [
+			"[$1].byHeight",
+			"$0"
+		],
+		"description": "Use breakpoint by height"
+	},
+}

@@ -1,0 +1,44 @@
+stages:
+  - test
+  - build
+  - appdistribution
+
+before_script:
+  - "VERSION=$(sed -n 's/^version: //p' pubspec.yaml)"
+
+postman_job:
+  stage: test
+  only:
+    - tags
+  image: wojciechzurek/newman-ci
+  script:
+  - newman run ${POSTMAN_COLLECTION} -e ${POSTMAN_ENVIRONMENT} --reporters cli,html --reporter-html-export newman-results.html --color
+  artifacts:
+    when: always
+    paths:
+      - newman-results.html
+
+build:
+  stage: build
+  tags:
+    - flutter
+  only:
+    - build
+  script:
+    - flutter pub get
+    - flutter build apk
+    - "cp ./build/app/outputs/apk/release/app-release.apk ./$VERSION.apk"
+  artifacts:
+    name: "$CI_COMMIT_REF_NAME"
+    expire_in: 1 week
+    paths:
+      - "*.apk"
+
+deploy_production:
+  image: node:latest
+  stage: appdistribution
+  only:
+    - build
+  script:
+    - npm install -g firebase-tools
+    - "firebase appdistribution:distribute $VERSION.apk --app \"$APP_ID\" --release-notes \"$CI_COMMIT_MESSAGE\" --groups \"testers\" --token \"$FB_TOKEN\""
